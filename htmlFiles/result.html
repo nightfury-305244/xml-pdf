@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Convertor</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 60px;
+        font-family: sans-serif;
+      }
+
+      .header {
+        display: flex;
+        margin-bottom: 3rem;
+        border-bottom: 1px solid;
+      }
+
+      .header .menu {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header .menu .main {
+        font-size: 2rem;
+      }
+
+      .header .menu .short {
+        font-size: 1.4rem;
+      }
+
+      .header .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        font-size: 2rem;
+        line-height: 2rem;
+        color: #58b55c;
+      }
+
+      .patient_info {
+        margin-bottom: 2rem;
+      }
+
+      .patient_info .patient_info_row {
+        display: flex;
+        line-height: 1.5rem;
+      }
+
+      .patient_info .patient_info_row .title {
+        font-size: 1.2rem;
+        line-height: 4rem;
+        color: #58b55c;
+      }
+
+      .patient_info .patient_info_row div {
+        flex-grow: 1;
+        flex-basis: 0;
+      }
+
+      .doctor_note {
+        margin-bottom: 2rem;
+      }
+
+      .doctor_note div{
+        line-height: 1.5rem;
+      }
+
+      .doctor_note .title {
+        line-height: 4rem;
+        font-size: 1.2rem;
+        color: #58b55c;
+      }
+
+      .container .title{
+        line-height: 4rem;
+        font-size: 1.2rem;
+        color: #58b55c;
+      }
+
+      .container > table {
+        width: 100%;
+        border-collapse: separate; 
+      }
+
+      .container > table > tbody > tr > td {
+        padding-bottom: 30px;
+      }
+
+      .container > table tbody {
+        vertical-align: top;
+      }
+
+      .container > table td {
+        padding-top: 15px;
+        min-width: 112px;
+      }
+
+      .container > table .content {
+        border-collapse: separate;
+        margin-bottom: 30px;
+      }
+
+      .container > table .content > tbody > tr > td,
+      th {
+        padding-right: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="menu">
+        <div class="main">Quanum</div>
+        <div class="short">EHR</div>
+      </div>
+      <div class="title"><b>Continuity of Care Document</b></div>
+    </div>
+    <div class="patient_info">
+      <div class="patient_info_row">
+        <div class="title"><b>Patient Information</b></div>
+      </div>
+      <div class="patient_info_row">
+        <div class="name">
+          Patient Name: Zyxlo
+          Carmona
+        </div>
+        <div class="gender">
+          Gender:
+          Unknown
+        </div>
+      </div>
+      <div class="patient_info_row">
+        <div class="birth">
+          Date of Birth: 20070411
+        </div>
+        <div class="telecom">tel: (562) 777-5291</div>
+      </div>
+      <div class="patient_info_row">
+        <div class="addr">
+           Address:
+          CA
+          Pico Rivera,
+          90660,
+          9456 Reichung LN 
+        </div>
+        <div class="ethnic">
+          
+          Race & Ethnicity:
+          Hispanic or Latino
+          
+        </div>
+      </div>
+    </div>
+    <div class="doctor_note">
+      <div class="title"><b>Doctors Note</b></div>
+      <div>Sayeeda Sultana MD</div>
+      <div>20240116</div>
+      <div>
+        CA
+        Pico Rivera,
+        90660,
+        8854 WHITTIER BLVD
+      </div>
+      <div>
+        tel: (562) 942-0032
+      </div>
+    </div>
+    <div class="container">
+      <div class="title"><b>Sick Visit</b></div>
+      <table>
+        <colgroup>
+          <col style="width: 15%" />
+          <col style="width: 85%" />
+        </colgroup>
+        
+        <tr>
+          <td><b>Problems</b></td>
+          <td>
+             
+            
+   		
+   
+            
+            <table class="content">
+              <tr>
+                
+                <th>Condition</th>
+                
+                <th>Effective Date</th>
+                
+                <th>Status</th>
+                
+                <th>Notes</th>
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td">  Insect bite (nonvenomous), right knee, sequela</td>
+                
+                
+                
+                
+                
+                <td class="content_td"> Active</td>
+                
+                
+                
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td">  No Known Problems</td>
+                
+                
+                
+                <td class="content_td"> 06/13/2017</td>
+                
+                
+                
+                <td class="content_td"> Inactive</td>
+                
+                
+                
+                
+              </tr>
+              
+            </table>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Medications</b></td>
+          <td>
+             
+            
+
+
+            
+            <table class="content">
+              <tr>
+                
+                <th>Medication</th>
+                
+                <th>Instruction </th>
+                
+                <th>Start Date</th>
+                
+                <th>End Date</th>
+                
+                <th>Status</th>
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> amoxicillin-clavulanate</td>
+                
+                
+                
+                <td class="content_td"> 200 mg-28.5 mg/5 mL powder for reconstitution; 1 1/2 tsp PO (Oral) three times a day; Dispense: 200; 10 days supply</td>
+                
+                
+                
+                <td class="content_td"> 06/07/2017</td>
+                
+                
+                
+                <td class="content_td"> 06/17/2017</td>
+                
+                
+                
+                <td class="content_td"> completed</td>
+                
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> Motrin Childrens</td>
+                
+                
+                
+                <td class="content_td"> 100 mg/5 mL suspension; 2 tsp PO (Oral) three times a day; Dispense: 4; 3 days supply</td>
+                
+                
+                
+                <td class="content_td"> 06/07/2017</td>
+                
+                
+                
+                <td class="content_td"> 06/10/2017</td>
+                
+                
+                
+                <td class="content_td"> completed</td>
+                
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> EpiPen JR 2-Pak</td>
+                
+                
+                
+                <td class="content_td"> 0.15 mg kit; as directed INJECT take as directed; Dispense: 1; 1 day supply</td>
+                
+                
+                
+                <td class="content_td"> 10/24/2017</td>
+                
+                
+                
+                <td class="content_td"> 10/25/2017</td>
+                
+                
+                
+                <td class="content_td"> completed</td>
+                
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> Benadryl Allergy</td>
+                
+                
+                
+                <td class="content_td"> 12.5 mg/5 mL liquid; 1 tsp PO (Oral) three times a day; Dispense: 2; 3 days supply</td>
+                
+                
+                
+                <td class="content_td"> 06/07/2017</td>
+                
+                
+                
+                <td class="content_td"> 06/10/2017</td>
+                
+                
+                
+                <td class="content_td"> completed</td>
+                
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> triamcinolone topical</td>
+                
+                
+                
+                <td class="content_td"> 0.1% ointment; as directed TOP (Topical) three times a day; Dispense: 30; 3 days supply</td>
+                
+                
+                
+                <td class="content_td"> 10/24/2017</td>
+                
+                
+                
+                <td class="content_td"> 10/27/2017</td>
+                
+                
+                
+                <td class="content_td"> completed</td>
+                
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> Benadryl Allergy</td>
+                
+                
+                
+                <td class="content_td"> 12.5 mg/5 mL liquid; 1 tsp PO (Oral) three times a day; Dispense: 2; 3 days supply</td>
+                
+                
+                
+                <td class="content_td"> 10/24/2017</td>
+                
+                
+                
+                <td class="content_td"> 10/27/2017</td>
+                
+                
+                
+                <td class="content_td"> completed</td>
+                
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> Orapred</td>
+                
+                
+                
+                <td class="content_td"> sodium phosphate 15 mg/5 mL liquid; 1 tsp PO (Oral) two times a day; Dispense: 4; 3 days supply</td>
+                
+                
+                
+                <td class="content_td"> 10/24/2017</td>
+                
+                
+                
+                <td class="content_td"> 10/27/2017</td>
+                
+                
+                
+                <td class="content_td"> completed</td>
+                
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> No Known</td>
+                
+                
+                
+                
+                
+                <td class="content_td"> 06/07/2017</td>
+                
+                
+                
+                <td class="content_td"> 06/07/2017</td>
+                
+                
+                
+                <td class="content_td"> Inactive</td>
+                
+                
+              </tr>
+              
+            </table>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Allergies</b></td>
+          <td>
+             
+            
+	
+
+            
+            <table class="content">
+              <tr>
+                
+                <th>Substance</th>
+                
+                <th>Reaction</th>
+                
+                <th>Effective Date</th>
+                
+                <th>Severity</th>
+                
+                <th>Status</th>
+                
+                <th>Notes</th>
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> No known</td>
+                
+                
+                
+                
+                
+                <td class="content_td"> 06/07/2017</td>
+                
+                
+                
+                
+                
+                <td class="content_td"> Active</td>
+                
+                
+                
+                
+              </tr>
+              
+            </table>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Procedures</b></td>
+          <td>
+             Patient has no captured procedures or no procedures were selected to be included in this document.
+             
+            
+	
+
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Results</b></td>
+          <td>
+             Patient has no available results or no available results were selected to be included in this document.
+             
+            
+    		
+			    
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Vital Signs</b></td>
+          <td>
+             
+            
+  
+
+            
+            <table class="content">
+              <tr>
+                
+                <th>Date</th>
+                
+                <th>Height</th>
+                
+                <th>Weight</th>
+                
+                <th>BMI</th>
+                
+                <th>Temp</th>
+                
+                <th>B/P</th>
+                
+                <th>Pulse</th>
+                
+                <th>Respirations</th>
+                
+                <th>O Sat</th>
+                
+                <th>Inhaled O</th>
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> 06/07/2017</td>
+                
+                
+                
+                <td class="content_td"> 137.2 cm</td>
+                
+                
+                
+                <td class="content_td"> 39.2 kg</td>
+                
+                
+                
+                <td class="content_td"> 20.8 kg/m2</td>
+                
+                
+                
+                <td class="content_td"> 38.0 C Temporal</td>
+                
+                
+                
+                <td class="content_td"> 100/84  mmHg Sitting/Right Arm</td>
+                
+                
+                
+                <td class="content_td"> 88 BPM Radial</td>
+                
+                
+                
+                <td class="content_td"> 14 BPM</td>
+                
+                
+                
+                
+                
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> 10/24/2017</td>
+                
+                
+                
+                <td class="content_td"> 141.0 cm</td>
+                
+                
+                
+                <td class="content_td"> 38.1 kg</td>
+                
+                
+                
+                <td class="content_td"> 19.2 kg/m2</td>
+                
+                
+                
+                <td class="content_td"> 37.4 C Temporal</td>
+                
+                
+                
+                <td class="content_td"> 94/64  mmHg Sitting/Left Arm</td>
+                
+                
+                
+                <td class="content_td"> 87 BPM Radial</td>
+                
+                
+                
+                <td class="content_td"> 14 BPM</td>
+                
+                
+                
+                
+                
+                
+              </tr>
+              
+            </table>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Instructions</b></td>
+          <td>
+             
+            
+
+
+            
+            <table class="content">
+              <tr>
+                
+                <th>Date Of Service</th>
+                
+                <th>Patient Clinical Instructions</th>
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> 06/07/2017</td>
+                
+                
+                
+                <td class="content_td"> To wear insect repellent on exposed parts of body </td>
+                
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> 10/24/2017</td>
+                
+                
+                
+                <td class="content_td"> How to use epicentre in emergency .</td>
+                
+                
+              </tr>
+              
+            </table>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Reason for Referral</b></td>
+          <td>
+             Patient has no captured Reason for Referral or no
+	available Reason for Referral were selected to be included in this
+	document.
+             
+            
+
+
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Immunizations</b></td>
+          <td>
+             Patient has no captured immunizations or no available immunizations were selected to be included in this document.
+             
+            
+	
+
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Encounters</b></td>
+          <td>
+             
+            
+		
+
+            
+            <table class="content">
+              <tr>
+                
+                <th>Encounter Date</th>
+                
+                <th>Encounter Diagnoses</th>
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td">  06/07/2017</td>
+                
+                
+                
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td">  10/24/2017</td>
+                
+                
+                
+                
+              </tr>
+              
+            </table>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Social History</b></td>
+          <td>
+             Patient has no smoking status captured or no available smoking status was selected to be included in this document.
+             
+            
+
+  	  
+  
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Chief Complaint and Reason for Visit</b></td>
+          <td>
+             
+            
+	 
+ 
+            
+            <table class="content">
+              <tr>
+                
+                <th>Encounter Date</th>
+                
+                <th>Reason for visit</th>
+                
+                <th>Chief Complaint(s)</th>
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td">  06/07/2017</td>
+                
+                
+                
+                <td class="content_td"> sick visit</td>
+                
+                
+                
+                <td class="content_td"> 
+				 
+				</td>
+                
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td">  10/24/2017</td>
+                
+                
+                
+                <td class="content_td"> Sick Visit</td>
+                
+                
+                
+                <td class="content_td"> 
+				 
+				</td>
+                
+                
+              </tr>
+              
+            </table>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Medical Equipment</b></td>
+          <td>
+             Patient has no medical devices or none were selected to be included in this document.
+             
+            
+  	  
+  
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Assessments</b></td>
+          <td>
+             
+            
+    
+  
+            
+            <table class="content">
+              <tr>
+                
+                <th>Assessment Text</th>
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> Infected insect bite  </td>
+                
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> Right ring finger bee sting </td>
+                
+                
+              </tr>
+              
+            </table>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Functional Status</b></td>
+          <td>
+             
+            
+							Patient has no functional status captured or no available functional status were selected to be included in this document.
+			
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Mental Status</b></td>
+          <td>
+             
+            
+		 			Patient has no mental status captured or no available mental status were selected to be included in this document.
+		
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Medications Administered</b></td>
+          <td>
+             Patient has no captured administered medications or no administered medications were selected to be included in this document.
+             
+            
+	
+			
+	
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Plan Of Treatment Section</b></td>
+          <td>
+             
+             
+			 
+																		 
+																																					 
+							 
+																													
+            
+            <table class="content">
+              <tr>
+                
+                <th>Date Of Service</th>
+                
+                <th>Plan Text</th>
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> 06/07/2017</td>
+                
+                
+                
+                <td class="content_td"> To give medication as instructed 
+
+RTC or go to ER if present problem get worse or any new problem .</td>
+                
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> 10/24/2017</td>
+                
+                
+                
+                <td class="content_td"> Inj dexamethasone 4 mg IM 
+
+
+To give medication as instructed 
+
+RTC or go to ER if present problem get worse or any new problem .</td>
+                
+                
+              </tr>
+              
+            </table>
+            
+            <table class="content">
+              <tr>
+                
+                <th>Date Of Service</th>
+                
+                <th>Patient Decision Aids</th>
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> 06/07/2017</td>
+                
+                
+                
+                <td class="content_td"> Insect bites </td>
+                
+                
+              </tr>
+              
+              <tr>
+                
+                
+                <td class="content_td"> 10/24/2017</td>
+                
+                
+                
+                <td class="content_td"> Allergic reaction to bee sting education.
+</td>
+                
+                
+              </tr>
+              
+            </table>
+            
+          </td>
+        </tr>
+        
+      </table>
+    </div>
+  </body>
+</html>

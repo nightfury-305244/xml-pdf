@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF Convertor</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 60px;
+        font-family: sans-serif;
+      }
+
+      .header {
+        display: flex;
+        margin-bottom: 3rem;
+        border-bottom: 1px solid;
+      }
+
+      .header .menu {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .header .menu .main {
+        font-size: 2rem;
+      }
+
+      .header .menu .short {
+        font-size: 1.4rem;
+      }
+
+      .header .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        font-size: 2rem;
+        line-height: 2rem;
+        color: #58b55c;
+      }
+
+      .patient_info {
+        margin-bottom: 2rem;
+      }
+
+      .patient_info .patient_info_row {
+        display: flex;
+        line-height: 1.5rem;
+      }
+
+      .patient_info .patient_info_row .title {
+        font-size: 1.2rem;
+        line-height: 4rem;
+        color: #58b55c;
+      }
+
+      .patient_info .patient_info_row div {
+        flex-grow: 1;
+        flex-basis: 0;
+      }
+
+      .doctor_note {
+        margin-bottom: 2rem;
+      }
+
+      .doctor_note div{
+        line-height: 1.5rem;
+      }
+
+      .doctor_note .title {
+        line-height: 4rem;
+        font-size: 1.2rem;
+        color: #58b55c;
+      }
+
+      .container .title{
+        line-height: 4rem;
+        font-size: 1.2rem;
+        color: #58b55c;
+      }
+
+      .container > table {
+        width: 100%;
+        border-collapse: separate; 
+      }
+
+      .container > table > tbody > tr > td {
+        padding-bottom: 30px;
+      }
+
+      .container > table tbody {
+        vertical-align: top;
+      }
+
+      .container > table td {
+        padding-top: 15px;
+        min-width: 112px;
+      }
+
+      .container > table .content {
+        border-collapse: separate;
+        margin-bottom: 30px;
+      }
+
+      .container > table .content > tbody > tr > td,
+      th {
+        padding-right: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="menu">
+        <div class="main">Quanum</div>
+        <div class="short">EHR</div>
+      </div>
+      <div class="title"><b>{{.Title}}</b></div>
+    </div>
+    <div class="patient_info">
+      <div class="patient_info_row">
+        <div class="title"><b>Patient Information</b></div>
+      </div>
+      <div class="patient_info_row">
+        <div class="name">
+          Patient Name: {{.RecordTarget.PatientRole.Patient.Name.Given}}
+          {{.RecordTarget.PatientRole.Patient.Name.Family}}
+        </div>
+        <div class="gender">
+          Gender:
+          {{.RecordTarget.PatientRole.Patient.AdministrativeGenderCode.DisplayName}}
+        </div>
+      </div>
+      <div class="patient_info_row">
+        <div class="birth">
+          Date of Birth: {{.RecordTarget.PatientRole.Patient.BirthTime.Value}}
+        </div>
+        <div class="telecom">{{.RecordTarget.PatientRole.Telecom.Value}}</div>
+      </div>
+      <div class="patient_info_row">
+        <div class="addr">
+          {{if .RecordTarget.PatientRole.Addr.State}} Address:
+          {{.RecordTarget.PatientRole.Addr.State}}
+          {{.RecordTarget.PatientRole.Addr.City}},
+          {{.RecordTarget.PatientRole.Addr.PostalCode}},
+          {{.RecordTarget.PatientRole.Addr.StreetAddressLine}} {{end}}
+        </div>
+        <div class="ethnic">
+          {{if .RecordTarget.PatientRole.Patient.EthnicGroupCode.DisplayName}}
+          Race & Ethnicity:
+          {{.RecordTarget.PatientRole.Patient.EthnicGroupCode.DisplayName}}
+          {{end}}
+        </div>
+      </div>
+    </div>
+    <div class="doctor_note">
+      <div class="title"><b>Doctors Note</b></div>
+      <div>{{.Author.AssignedAuthor.RepresentedOrganization.Name}}</div>
+      <div>{{.Author.Time.Value}}</div>
+      <div>
+        {{.Author.AssignedAuthor.RepresentedOrganization.Addr.State}}
+        {{.Author.AssignedAuthor.RepresentedOrganization.Addr.City}},
+        {{.Author.AssignedAuthor.RepresentedOrganization.Addr.PostalCode}},
+        {{.Author.AssignedAuthor.RepresentedOrganization.Addr.StreetAddressLine}}
+      </div>
+      <div>
+        {{.Author.AssignedAuthor.RepresentedOrganization.Telecom.Value}}
+      </div>
+    </div>
+    <div class="container">
+      <div class="title"><b>Sick Visit</b></div>
+      <table>
+        <colgroup>
+          <col style="width: 15%" />
+          <col style="width: 85%" />
+        </colgroup>
+        {{range .Component.StructuredBody.Component}}
+        <tr>
+          <td><b>{{.Section.Title}}</b></td>
+          <td>
+            {{if .Section.Text.Content.Text}} {{.Section.Text.Content.Text}}
+            {{end}} 
+            {{.Section.Text.Text}}
+            {{range .Section.Text.Table}}
+            <table class="content">
+              <tr>
+                {{range .Thead.Tr.Th}}
+                <th>{{.Text}}</th>
+                {{end}}
+              </tr>
+              {{range .Tbody.Tr}}
+              <tr>
+                {{range .Td}}
+                {{if or .Text .Content.Text}}
+                <td class="content_td">{{.Content.Text}} {{.Text}}</td>
+                {{end}}
+                {{end}}
+              </tr>
+              {{end}}
+            </table>
+            {{end}}
+          </td>
+        </tr>
+        {{end}}
+      </table>
+    </div>
+  </body>
+</html>
